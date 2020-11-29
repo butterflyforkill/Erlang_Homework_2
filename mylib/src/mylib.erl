@@ -1,9 +1,9 @@
 -module(mylib).
 
--export([create/0,insert/3,lookup/1,delete_obsolete/0]).
+-export([create/1,insert/3,lookup/1,delete_obsolete/0]).
 
-create() ->
-    try ets:new(cache,[named_table]) of
+create(TableName) ->
+    try ets:new(cache,TableName) of
 	cache -> ok
     catch
 	error:badarg ->
